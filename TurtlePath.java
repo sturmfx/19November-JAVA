@@ -27,6 +27,25 @@ public class TurtlePath
         byte[] bytes = result.getBytes();
         Files.write(path, bytes);
     }
+    
+    public void load() throws IOException
+    {
+        String mainPath = "src/test1.txt";
+        Path path = Paths.get(mainPath);
+        ArrayList<String> result  = new ArrayList<String>(Files.readAllLines(path));
+        for(String s : result)
+        {
+            String part[] = s.split(",");
+            int _x = Integer.parseInt(part[0]);
+            int _y = Integer.parseInt(part[1]);
+            int _color = Integer.parseInt(part[2]);
+
+            x.add(_x);
+            y.add(_y);
+            color.add(_color);
+        }
+    }
+
 
     public void addPoint(int _x, int _y, int _color)
     {
